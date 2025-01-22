@@ -7,74 +7,178 @@
 //Teste larissa
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    //variaveis para preenchimentos das cartas.
-    char pais[50];
-    char estado[50];
-    char cod_cidade[4];
-    char nome[50];
-    int pop; //população
-    float area;
-    float pib;
-    int p_tur; // ponto turistico
+    //variaveis para preenchimentos das cartas, com vetor para que possem ser armazenados 2 valores diferentes usando a mesma variavel
+    char pais[2][50];
+    char estado[2][50];
+    char cod_cidade[2][4];
+    char nome[2][50];
+    int pop[2]; //população
+    float area[2];
+    float pib[2];
+    int p_tur[2]; // ponto turistico
 
     //Variaveis que farão calculos com base nos dados inseridos
-    float dens_pop; //Desidade populacional
-    float per_cap; //PIB per capita
+    float dens_pop[2]; //Desidade populacional
+    float per_cap[2]; //PIB per capita
+    float poder[2]; //super poder das cartas
+
+    int vencedor[2]; // vai acrescentar pontos na carta vencedora de acordo com a comparação.
 
     // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
     printf("REGISTRO DE CARTAS PARA O JOGO SUPER TRUNFO \n \n");
 
-    //Printf e scanf para o usuario inserir os dados.
-    printf("A carta de qual pais deseja registrar?\n");
-    scanf("%s", &pais);
+    //a estrutura de repetição for vai rodar 2 vezes e armazenar o dados inseridos nos vetores.
+    for (int i = 0; i < 2; i++) {
+        printf("Qual o país da %dº carta?\n", i);
+        scanf("%s", &pais[i]);
 
-    printf("Qual estado deste pais e referente a carta?\n");
-    scanf("%s", &estado, "\n \n");
+        printf("Qual estado deste pais e referente a %dº carta?\n", i);
+        scanf("%s", &estado[i], "\n \n");
 
-    printf("Insira o código da cidade desta carta?\n"
-            "Obs: Lembrando que o código em questão, deve conter:\n"
-            "- a letra referente ao estado, sendo elas de A-H \n"
-            "- e o número referente a cidade, sendo eles de 001-004 \n"
-            "EX: A001, B002, C003 \n");
-    scanf("%s", &cod_cidade);
+        printf("Insira o código da cidade da %dº carta?\n", i);
+        printf("Obs: Lembrando que o código em questão, deve conter:\n");
+        printf("- a letra referente ao estado, sendo elas de A-H \n");
+        printf("- e o número referente a cidade, sendo eles de 001-004 \n");
+        printf("EX: A001, B002, C003 \n");
+        scanf("%s", &cod_cidade[i]);
 
-    printf("Qual o nome da cidade da carta?\n");
-    scanf("%s", &nome);
+        printf("Qual a cidade da %dº carta?\n", i);
+        scanf("%s", &nome[i]);
 
-    printf("Qual o numero de habitantes da cidade em questão?\n");
-    scanf("%d", &pop);
+        printf("Qual o numero de habitantes da cidade em questão?\n");
+        scanf("%d", &pop[i]);
 
-    printf("Qual a área da cidade?\n");
-    scanf("%f", &area);
+        printf("Qual a área da cidade?\n");
+        scanf("%f", &area[i]);
 
-    printf("Qual o valor do PIB desta cidade?\n");
-    scanf("%f", &pib);
+        printf("Qual o valor do PIB desta cidade?\n");
+        scanf("%f", &pib[i]);
 
-    printf("A cidade em questão tem quantos pontos turisticos?\n");
-    scanf("%d", &p_tur);
+        printf("A cidade em questão tem quantos pontos turisticos?\n");
+        scanf("%d", &p_tur[i]);
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+        //calcula o super densidade pop., PIB per capita e poder
+        dens_pop[i]= pop[i] / area[i];
+        per_cap[i]= pib[i] / pop[i];
+        poder[i] = pop[i] + area[i] + pib[i] + p_tur[i] + dens_pop[i] + per_cap[i];
+    }
 
-    //Valores a serem exibidos
-    printf("A CARTA INSERIDA FOI A SEGUINTE: \n\n");
-    printf("País: %s \n", pais);
-    printf("Estado: %s \n", estado);
-    printf("Código: %s \n", cod_cidade);
-    printf("Nome: %s \n", nome);
-    printf("População: %d \n", pop);
-    printf("Área: %.2f \n", area);
-    printf("PIB: %.2f \n", pib);
-    printf("Pontos Turisticos: %d \n", p_tur);
-    printf("Densidade Populacional: %.2f \n", pop / area); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
-    printf("PIB Per Capita: %.2f \n", pib / pop); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
+    //comparação das cartas
+    printf("COMPARAÇÃO DAS PROPRIEDADES \n \n");
+    if (pop[0] > pop[1]) { //Compara população
+        printf("População:\n");
+        printf("%s = %d > %s = %d \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("População:\n");
+        printf("%s = %d > %s = %d \n", cod_cidade[1],pop[1],cod_cidade[0], pop[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
 
+    if (area[0] > area[1]) { //Compara área
+        printf("Área:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[0],area[0],cod_cidade[1], area[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("Área:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[1],area[1],cod_cidade[0], area[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+
+    if (pib[0] > pib[1]) { //Compara PIB
+        printf("PIB:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[0],pib[0],cod_cidade[1], pib[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("PIB:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[1],pib[1],cod_cidade[0], pib[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+    
+    if (p_tur[0] > p_tur[1]) { //Compara ponto turistico
+        printf("Ponto Turistico:\n");
+        printf("%s = %d > %s = %d \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("Ponto Turistico:\n");
+        printf("%s = %d > %s = %d \n", cod_cidade[1],p_tur[1],cod_cidade[0], p_tur[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+    
+    if (dens_pop[0] < dens_pop[1]) { //Compara densidade populacional
+        printf("Densidade Populacional:\n");
+        printf("%s = %.2f < %s = %.2f \n", cod_cidade[0],dens_pop[0],cod_cidade[1], dens_pop[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("Densidade Populacional:\n");
+        printf("%s = %.2f < %s = %.2f \n", cod_cidade[1],dens_pop[1],cod_cidade[0], dens_pop[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+    
+    if (per_cap[0] > per_cap[1]) { //Compara PIB per capita
+        printf("PIB Per Capita:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[0],per_cap[0],cod_cidade[1], per_cap[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("PIB Per Capita:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[1],per_cap[1],cod_cidade[0], per_cap[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+    
+    if (poder[0] > poder[1]) { //Compara super poder
+        printf("Super Poder:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[0],poder[0],cod_cidade[1], poder[1]);
+        printf("A carta %s venceu \n",cod_cidade[0]);
+        vencedor[0]++;
+    }else{
+        printf("Super Poder:\n");
+        printf("%s = %.2f > %s = %.2f \n", cod_cidade[1],poder[1],cod_cidade[0], poder[0]);
+        printf("A carta %s venceu \n",cod_cidade[1]);
+        vencedor[1]++;
+    }
+
+    //Exibição da carta vencedora
+    if (vencedor[0] > vencedor[1]){
+        // Exibição dos Dados das Cartas:
+        printf("A CARTA VENCEDORA FOI: \n\n");
+        printf("País: %s \n", pais[0]);
+        printf("Estado: %s \n", estado[0]);
+        printf("Código: %s \n", cod_cidade[0]);
+        printf("Nome: %s \n", nome[0]);
+        printf("População: %d \n", pop[0]);
+        printf("Área: %.2f \n", area[0]);
+        printf("PIB: %.2f \n", pib[0]);
+        printf("Pontos Turisticos: %d \n", p_tur[0]);
+        printf("Densidade Populacional: %.2f \n", dens_pop[0]); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
+        printf("PIB Per Capita: %.2f \n", per_cap[0]);
+        printf("Super Poder: %.2f \n", poder[0]);
+    }else{
+        // Exibição dos Dados das Cartas:
+        printf("A CARTA VENCEDORA FOI: \n\n");
+        printf("País: %s \n", pais[1]);
+        printf("Estado: %s \n", estado[1]);
+        printf("Código: %s \n", cod_cidade[1]);
+        printf("Nome: %s \n", nome[1]);
+        printf("População: %d \n", pop[1]);
+        printf("Área: %.2f \n", area[1]);
+        printf("PIB: %.2f \n", pib[1]);
+        printf("Pontos Turisticos: %d \n", p_tur[1]);
+        printf("Densidade Populacional: %.2f \n", dens_pop[1]); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
+        printf("PIB Per Capita: %.2f \n", per_cap[1]);
+        printf("Super Poder: %.2f \n", poder[1]);
+    }
+    
     return 0;
 }
