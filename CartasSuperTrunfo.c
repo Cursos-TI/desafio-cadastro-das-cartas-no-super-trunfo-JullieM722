@@ -187,7 +187,7 @@ int main() {
 
     //Exibição da carta vencedora
     if (vencedor[0] > vencedor[1]){
-        // Exibição dos Dados das Cartas:
+        // Exibição dos Dados da primeira carta (caso ela seja a vencedora):
         printf("A CARTA VENCEDORA FOI: \n\n");
         printf("País: %s \n", pais[0]);
         printf("Estado: %s \n", estado[0]);
@@ -201,7 +201,7 @@ int main() {
         printf("PIB Per Capita: %.2f \n", per_cap[0]);
         printf("Super Poder: %.2f \n", poder[0]);
     }else{
-        // Exibição dos Dados das Cartas:
+        // Exibição dos Dados da segunda carta (caso ela seja a vencedora):
         printf("A CARTA VENCEDORA FOI: \n\n");
         printf("País: %s \n", pais[1]);
         printf("Estado: %s \n", estado[1]);
