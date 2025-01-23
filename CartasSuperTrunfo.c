@@ -197,7 +197,7 @@ int main() {
         printf("Área: %.2f \n", area[0]);
         printf("PIB: %.2f \n", pib[0]);
         printf("Pontos Turisticos: %d \n", p_tur[0]);
-        printf("Densidade Populacional: %.2f \n", dens_pop[0]); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
+        printf("Densidade Populacional: %.2f \n", dens_pop[0]); 
         printf("PIB Per Capita: %.2f \n", per_cap[0]);
         printf("Super Poder: %.2f \n", poder[0]);
     }else{
@@ -211,7 +211,7 @@ int main() {
         printf("Área: %.2f \n", area[1]);
         printf("PIB: %.2f \n", pib[1]);
         printf("Pontos Turisticos: %d \n", p_tur[1]);
-        printf("Densidade Populacional: %.2f \n", dens_pop[1]); //O %.2f faz a divisão das duas respectivas variaveis antes de imprimi-las
+        printf("Densidade Populacional: %.2f \n", dens_pop[1]);
         printf("PIB Per Capita: %.2f \n", per_cap[1]);
         printf("Super Poder: %.2f \n", poder[1]);
     }
