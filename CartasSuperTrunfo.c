@@ -12,10 +12,10 @@ int main() {
     char estado[2][50];
     char cod_cidade[2][4];
     char nome[2][50];
-    int pop[2]; //população
+    unsigned int pop[2]; //população
     float area[2];
     float pib[2];
-    int p_tur[2]; // ponto turistico
+    unsigned int p_tur[2]; // ponto turistico
 
     //Variaveis que farão calculos com base nos dados inseridos
     float dens_pop[2]; //Desidade populacional
@@ -46,7 +46,7 @@ int main() {
         scanf("%s", &nome[i]);
 
         printf("Qual o numero de habitantes da cidade em questão?\n");
-        scanf("%d", &pop[i]);
+        scanf("%u", &pop[i]);
 
         printf("Qual a área da cidade?\n");
         scanf("%f", &area[i]);
@@ -55,7 +55,7 @@ int main() {
         scanf("%f", &pib[i]);
 
         printf("A cidade em questão tem quantos pontos turisticos?\n");
-        scanf("%d", &p_tur[i]);
+        scanf("%u", &p_tur[i]);
 
         //calcula o super densidade pop., PIB per capita e poder
         dens_pop[i]= pop[i] / area[i];
@@ -69,16 +69,16 @@ int main() {
     //Compara população
     if (pop[0] > pop[1]) { //População da primeira carta inserida é maior
         printf("População:\n");
-        printf("%s - %d > %s - %d \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
+        printf("%s - %u > %s - %u \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
         printf("A carta %s venceu \n",cod_cidade[0]);
         vencedor[0]++;
     } else if (pop[0] == pop[1]){ //População das cartas empataram
         printf("População:\n");
-        printf("%s - %d = %s - %d \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
+        printf("%s - %u = %s - %u \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
         printf("As cartas empataram \n");
     } else{ // População da segunda carta é maior
         printf("População:\n");
-        printf("%s - %d > %s - %d \n", cod_cidade[1],pop[1],cod_cidade[0], pop[0]);
+        printf("%s - %u > %s - %u \n", cod_cidade[1],pop[1],cod_cidade[0], pop[0]);
         printf("A carta %s venceu \n",cod_cidade[1]);
         vencedor[1]++;
     }
@@ -120,16 +120,16 @@ int main() {
     //Compara ponto turistico
     if (p_tur[0] > p_tur[1]) { //Ponto turistico da primeira carta inserida é maior
         printf("Ponto Turistico:\n");
-        printf("%s - %d > %s - %d \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
+        printf("%s - %u > %s - %u \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
         printf("A carta %s venceu \n",cod_cidade[0]);
         vencedor[0]++;
     } else if (p_tur[0] == p_tur[1]){ //Ponto turistico das cartas empataram
         printf("Ponto Turistico:\n");
-        printf("%s - %d = %s - %d \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
+        printf("%s - %u = %s - %u \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
         printf("As cartas empataram \n");
     } else{ //Ponto turistico da segunda carta inserida é maior
         printf("Ponto Turistico:\n");
-        printf("%s - %d > %s - %d \n", cod_cidade[1],p_tur[1],cod_cidade[0], p_tur[0]);
+        printf("%s - %u > %s - %u \n", cod_cidade[1],p_tur[1],cod_cidade[0], p_tur[0]);
         printf("A carta %s venceu \n",cod_cidade[1]);
         vencedor[1]++;
     }
@@ -193,10 +193,10 @@ int main() {
         printf("Estado: %s \n", estado[0]);
         printf("Código: %s \n", cod_cidade[0]);
         printf("Nome: %s \n", nome[0]);
-        printf("População: %d \n", pop[0]);
+        printf("População: %u \n", pop[0]);
         printf("Área: %.2f \n", area[0]);
         printf("PIB: %.2f \n", pib[0]);
-        printf("Pontos Turisticos: %d \n", p_tur[0]);
+        printf("Pontos Turisticos: %u \n", p_tur[0]);
         printf("Densidade Populacional: %.2f \n", dens_pop[0]); 
         printf("PIB Per Capita: %.2f \n", per_cap[0]);
         printf("Super Poder: %.2f \n", poder[0]);
@@ -207,10 +207,10 @@ int main() {
         printf("Estado: %s \n", estado[1]);
         printf("Código: %s \n", cod_cidade[1]);
         printf("Nome: %s \n", nome[1]);
-        printf("População: %d \n", pop[1]);
+        printf("População: %u \n", pop[1]);
         printf("Área: %.2f \n", area[1]);
         printf("PIB: %.2f \n", pib[1]);
-        printf("Pontos Turisticos: %d \n", p_tur[1]);
+        printf("Pontos Turisticos: %u \n", p_tur[1]);
         printf("Densidade Populacional: %.2f \n", dens_pop[1]);
         printf("PIB Per Capita: %.2f \n", per_cap[1]);
         printf("Super Poder: %.2f \n", poder[1]);
